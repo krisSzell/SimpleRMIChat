@@ -1,14 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package rmichat.client;
 
 import java.rmi.RemoteException;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import rmichat.core.Models.Message;
+import rmichat.core.Models.PrivateMessage;
+import rmichat.core.Models.User;
 import rmichat.server.IComms;
 
 /**
@@ -16,47 +15,40 @@ import rmichat.server.IComms;
  * @author Krzysztof
  */
 public class ChattingService {
-    private final IClientComms _client;
+    
+    // <editor-fold desc="Private fields">
+    
+    private final User _user;
     private final IComms _server;
     
-    public ChattingService(IClientComms client, IComms server) {
-        _client = client;
+    // </editor-fold>
+    
+    public ChattingService(User client, IComms server) {
+        _user = client;
         _server = server;
     }
     
+    // <editor-fold desc="Public methods">
+    
     public void startGlobalChat() throws RemoteException {
-        _server.registerChatClient(_client);
-        System.out.println("Connected to global chat");
+        _server.registerUser(_user);
         Scanner userInput = new Scanner(System.in);
         String line;
         while (!(line = userInput.nextLine()).equals("exit")) {
             try {
-                _client.sendMessage(line);
+                String[] parts = line.split(" ");
+                if (parts[0].equals("-p")) {
+                    _server.receivePrivateMessage(new PrivateMessage(_user, parts[1], String.join(" ", Arrays.copyOfRange(parts, 2, parts.length))));
+                } else {
+                    _server.receiveMessage(new Message(_user, line));
+                }                
             } catch (RemoteException ex) {
                 Logger.getLogger(ChattingService.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        _client.leaveChat();
+        _server.unregisterUser(_user);
         System.out.println("Left global chat.");
     }
-
-    public void startPrivateChat() throws RemoteException {
-        System.out.println("Enter name of a user you want to start a private chat with:");
-        Scanner userToStartPrivateChat = new Scanner(System.in);
-        String user = userToStartPrivateChat.nextLine();
-        _client.startPrivateChat(user);
-        System.out.println("Private chat with " + user + ":");
-        
-        Scanner userInput = new Scanner(System.in);
-        String line;
-        while (!(line = userInput.nextLine()).equals("exit")) {
-            try {
-                _client.sendMessage(line);
-            } catch (RemoteException ex) {
-                Logger.getLogger(ChattingService.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        _client.leaveChat();
-        System.out.println("Left private chat.");
-    }
+    
+    // </editor-fold>
 }

@@ -3,13 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Programowanie/Java/SemVI/RMI/RMIChat/src/rmichat/server/Server.java</file>
             <file>file:/D:/Programowanie/Java/SemVI/RMI/RMIChat/src/rmichat/client/ChattingService.java</file>
-            <file>file:/D:/Programowanie/Java/SemVI/RMI/RMIChat/src/rmichat/client/Client.java</file>
+            <file>file:/D:/Programowanie/Java/SemVI/RMI/RMIChat/src/rmichat/core/Repositories/IUsersRepository.java</file>
+            <file>file:/D:/Programowanie/Java/SemVI/RMI/RMIChat/src/rmichat/core/Repositories/InMemoryUsersRepository.java</file>
+            <file>file:/D:/Programowanie/Java/SemVI/RMI/RMIChat/src/rmichat/core/TimeStampProvider.java</file>
+            <file>file:/D:/Programowanie/Java/SemVI/RMI/RMIChat/nbproject/build-impl.xml</file>
+            <file>file:/D:/Programowanie/Java/SemVI/RMI/RMIChat/src/rmichat/core/UserFactory.java</file>
             <file>file:/D:/Programowanie/Java/SemVI/RMI/RMIChat/src/rmichat/client/ClientComms.java</file>
             <file>file:/D:/Programowanie/Java/SemVI/RMI/RMIChat/src/rmichat/server/IComms.java</file>
             <file>file:/D:/Programowanie/Java/SemVI/RMI/RMIChat/src/rmichat/server/Comms.java</file>
             <file>file:/D:/Programowanie/Java/SemVI/RMI/RMIChat/src/rmichat/client/IClientComms.java</file>
+            <file>file:/D:/Programowanie/Java/SemVI/RMI/RMIChat/src/rmichat/core/Models/Message.java</file>
+            <file>file:/D:/Programowanie/Java/SemVI/RMI/RMIChat/src/rmichat/server/Server.java</file>
+            <file>file:/D:/Programowanie/Java/SemVI/RMI/RMIChat/src/rmichat/core/Models/PrivateMessage.java</file>
+            <file>file:/D:/Programowanie/Java/SemVI/RMI/RMIChat/src/rmichat/core/MessageFormatter.java</file>
+            <file>file:/D:/Programowanie/Java/SemVI/RMI/RMIChat/src/rmichat/client/Client.java</file>
+            <file>file:/D:/Programowanie/Java/SemVI/RMI/RMIChat/src/rmichat/core/Models/User.java</file>
         </group>
     </open-files>
 </project-private>
